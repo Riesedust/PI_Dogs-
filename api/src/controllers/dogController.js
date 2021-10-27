@@ -2,22 +2,10 @@ const {Dog, Temperamento} = require('../db')
 const {Op} = require('sequelize')
 const axios = require('axios')
 
-function addDog (req, res, next){
-    const {name, altura, peso, vida, temperamento} = req.body
-    let perro = {
-        name,
-        altura,
-        peso,
-        vida,
-    }
-    Dog.create(perro)
-    .then(perro => {
-        perro.addTemperamento(temperamento)
-        res.json({...perro, temperamento})
-    })
-    .catch(error =>{
-        next(error)
-    })
+function tempObj(str){
+    let arrTemp= str.join().split(', ').map((e => e.trim()))
+    let objTemp = arrTemp.map(e => {return {name: e}})
+    return objTemp
 }
 
 async function getDogs(req, res, next){
@@ -32,12 +20,20 @@ async function getDogs(req, res, next){
                 return{
                     id: e.id,
                     name: e.name,
-                    image: e.image.url,
-                    temperamento: e.temperament,
-                    peso: e.weight.metric
+                    image: e.image.url, 
+                    peso: e.weight.metric,
+                    temperamentos: tempObj([e.temperament])
                 }
             })
-            dogsDB = await Dog.findAll({attributes: ["id", "name", "peso", "temperamento", "image"]}) 
+            dogsDB = await Dog.findAll({include: {
+                model: Temperamento,
+                attributes: [ 'name' ],
+                through: {
+                    attributes: [],
+                }
+             },
+                attributes: ['id', 'name', 'image', 'peso']    
+            }) 
 
             allDogs = dogsDB.concat(dogsApi)
             res.send(allDogs) 
@@ -48,8 +44,8 @@ async function getDogs(req, res, next){
                 return {
                     id: e.id,
                     name: e.name,
-                    temperamento: e.temperament,
-                    peso: e.weight.metric
+                    peso: e.weight.metric,
+                    temperamentos: tempObj([e.temperament]),
                 }
             })
 
@@ -63,7 +59,7 @@ async function getDogs(req, res, next){
 
             allDogs = dogsDB.concat(dogsApi)
 
-            res.send(allDogs || 'No se encontró la raza')
+            res.send(allDogs)
         }
     } catch (error) {
         next(error)
@@ -75,8 +71,8 @@ async function getDogsById(req, res, next){
         const {id} = req.params
         let perro;
         if(isNaN(id)){
-            perro = await Dog.findByPk(id)
-            res.send(perro)
+            perro = await Dog.findByPk(id,{include: {model: Temperamento, attributes: ['name'],through: {attributes: []}}})
+            res.send([perro])
         }
         else{
             let response =(await axios.get("https://api.thedogapi.com/v1/breeds?apikey=c8ec4503-71b9-4334-a3cb-f1384f9a4017")).data
@@ -87,10 +83,10 @@ async function getDogsById(req, res, next){
                         id: e.id,
                         name: e.name,
                         image: e.image.url,
-                        temperamento: e.temperament,
                         peso: e.weight.metric,
                         altura: e.height.metric,
-                        vida: e.life_span
+                        vida: e.life_span,
+                        temperamentos: tempObj([e.temperament]),
                     }
             })
             res.send(perro)
@@ -103,7 +99,6 @@ async function getDogsById(req, res, next){
 
 
 module.exports= {
-    addDog,
     getDogs,
     getDogsById
 }

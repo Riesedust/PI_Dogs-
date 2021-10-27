@@ -1,0 +1,64 @@
+.info-box{
+    box-shadow: 5px 5px 15px rgb(100, 98, 98);
+    border-radius: 30px;
+    border-color: salmon;
+    width: 700px;
+    height: 700px;
+    margin-left: 330px;
+    display: grid;
+    grid-template-areas: "name" "image" "temp" "peso" "altura";
+    font-family: roboto;
+}
+
+.image-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-dog{
+    grid-area: image;
+    width: 300px;
+    height: 200px;
+}
+
+.temp-box{
+    grid-area: temp;
+    display: grid;
+}
+
+.peso-box{
+    grid-area: peso;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr ;
+    background: rgb(73, 150, 124);
+}
+
+.peso-box .imagekg-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.peso-box .image-kg{
+    width: 70px;
+    height: 70px;
+}
+
+.altura-box{
+    grid-area: altura;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr ;
+    background: rgb(73, 150, 124);
+}
+
+.altura-box .imagerule-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.altura-box .image-rule{
+    width: 70px;
+    height: 70px;
+}

@@ -1,16 +1,19 @@
 const {Dog, Temperamento} = require('../db')
 const axios = require('axios');
 
-var id = 1
 
 async function preTemperamentos(){
     try {
-        let temperamentos = (await axios.get("https://api.thedogapi.com/v1/breeds?apikey=c8ec4503-71b9-4334-a3cb-f1384f9a4017")).data
-        temperamentos = temperamentos.map(e =>{
-            Temperamento.create({
-                id: id++,
-                name: e.temperament
-            })
+        const temperamentos = (await axios.get("https://api.thedogapi.com/v1/breeds?apikey=c8ec4503-71b9-4334-a3cb-f1384f9a4017")).data
+        const temperamentosDb = temperamentos.map( el => el.temperament ).join().split(',')
+        const temperamentosTrim = temperamentosDb.map( el => el.trim())
+        let resultado = temperamentosTrim.filter((item,index)=>{
+            return temperamentosTrim.indexOf(item) === index;
+          })
+        resultado.forEach(e => {
+            if(e !== ''){
+                Temperamento.findOrCreate({where: { name: e}})
+            }
         })
         return "Temperamentos cargados"
     } catch (error) {
@@ -22,15 +25,7 @@ async function preTemperamentos(){
 async function getTemperamentos(req, res, next){
     try{
         const temp = await Temperamento.findAll();
-        var listTemp = await temp.map(t =>{
-          return t.name
-        });
-        listTemp = listTemp.filter(e => e != null)
-        listTemp = listTemp.map(e => e.split(", ")).flat()
-        let resultado = listTemp.filter((item,index)=>{
-            return listTemp.indexOf(item) === index;
-          })
-        return res.json(resultado.sort());
+        return res.json(temp);
       }
       catch(e){
         next(e)

@@ -1,0 +1,47 @@
+.fondo{
+    height: 625px;
+    background-image: url("../../images/dogebackground.jpg");
+  }
+
+.title{
+    margin: 0px;
+}
+
+.home{
+    margin: 0px;
+    position: absolute;
+    left: 590px;
+    top: 430px;
+    background-color: #f7ddc1;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    box-shadow: #422800 4px 4px 0 0;
+    color: #412804;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.home:hover {
+  background-color: #fff;
+}
+
+.home:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .home {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
