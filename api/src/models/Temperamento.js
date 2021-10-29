@@ -4,7 +4,6 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('temperamento', {
-    // idTemp: { type: DataTypes.INTEGER},
     name: {primaryKey: true,type: DataTypes.STRING},
   });
 };
