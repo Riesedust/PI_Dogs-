@@ -5,7 +5,9 @@ import './Home.css'
 function Home() {
     return (
         <div className="fondo">
-            <h1 className="title">dogs</h1>
+            <div className="title">
+                <h1 >dogs</h1>
+            </div>
             <Link to='/dogs'>
                 <h1 className="home">Home</h1>
             </Link>

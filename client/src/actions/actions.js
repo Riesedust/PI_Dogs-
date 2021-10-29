@@ -96,3 +96,13 @@ export function capitalize(word) {
     const lower = word.toLowerCase();
     return word.charAt(0).toUpperCase() + lower.slice(1);
   }
+
+export function separar(str){
+    if(str.includes('–')){
+        return str.split(' – ')
+    }
+    if(str.includes('-')){
+        return str.split(' - ')
+    }
+    else return str
+}

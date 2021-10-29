@@ -6,8 +6,13 @@
     height: 700px;
     margin-left: 330px;
     display: grid;
-    grid-template-areas: "name" "image" "temp" "peso" "altura";
+    background-color: rgb(70, 173, 173);
+    grid-template-areas: "name" "image" "temp" "peso" "altura" "vida";
     font-family: roboto;
+}
+.background{
+    background-image: url("https://trbahadurpur.com/wp-content/uploads/2021/01/background-5.jpg");
+    background-size: 1800px 700px;
 }
 
 .image-box{
@@ -20,6 +25,7 @@
     grid-area: image;
     width: 300px;
     height: 200px;
+    border-radius: 10px;
 }
 
 .temp-box{
@@ -27,12 +33,28 @@
     display: grid;
 }
 
+
+.button-back-info{
+    position:absolute;
+    right: 1270px;
+    top: 20px;
+    width: 60px;
+    height: 30px;
+    background-color: rgb(214, 164, 155);
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .peso-box{
     grid-area: peso;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr ;
-    background: rgb(73, 150, 124);
+    background: rgb(96, 170, 146);
 }
 
 .peso-box .imagekg-box{
@@ -61,4 +83,29 @@
 .altura-box .image-rule{
     width: 70px;
     height: 70px;
+}
+
+.vida-box{
+    grid-area: vida;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr ;
+    background-color: rgb(32, 104, 74);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.vida-box .imageheart-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vida-box .image-heart{
+    width: 70px;
+    height: 40px;
+}
+
+.loading{
+    background-color: white;
 }

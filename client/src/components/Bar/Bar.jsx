@@ -19,10 +19,9 @@ function Bar(props) {
     },[])
 
 
-    function capitalize(word) {
-        const lower = word.toLowerCase();
-        return word.charAt(0).toUpperCase() + lower.slice(1);
-      }
+    function capitalize(string) {
+        return string.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+    };
 
     function alChange(e){
         props.reset()
@@ -49,11 +48,11 @@ function Bar(props) {
 
     
     return (
-        <div>
-            <h1 className="title">Perro</h1>
+        <div className="bar-box">
+            <h1 className="title">Dogs app</h1>
             <div className="background-bar">
                 <ul key="ordenar" className="div1">
-                    <p>Ordenar:</p>
+                    <h4>Ordenar:</h4>
                     <select onChange={alChange} className="select-css"> 
                         <option value="default">Alfabeticamente</option>
                         <option value="az"> A - Z </option>
@@ -61,12 +60,12 @@ function Bar(props) {
                     </select>
                     <select onChange={pesoChange} className="select-css"> 
                         <option value="default">Peso</option>
-                        <option value="menor"> Menor </option>
-                        <option value="mayor"> Mayor </option>
+                        <option value="menor"> Minimo </option>
+                        <option value="mayor"> Maximo </option>
                     </select>
                 </ul>
                 <ul key="filtrar" className="div2">
-                    <p>Filtrar:</p>
+                    <h4>Filtrar:</h4>
                     <select onChange={tempChange}>
                         <option value='all'>Todos los temperamentos</option>
                         {temp ? temp.map(e => <option>{e.name}</option>) : <h1>Hubo problemas :S</h1> }
@@ -76,9 +75,9 @@ function Bar(props) {
                     <Link to='/add' className="button-go-form"><p>Crear raza</p></Link>
                 </ul>
                 <ul key="botones" className="div4">
-                    <button onClick={filterChange}value="all">Todos</button>
-                    <button onClick={filterChange}value='db'> Perros creados </button>
-                    <button onClick={filterChange}value='api'> Perros locales </button>
+                    <button className="buttons-filter-dogs" onClick={filterChange}value="all">Todos los perros</button>
+                    <button className="buttons-filter-dogs" onClick={filterChange}value='db'> Perros creados </button>
+                    <button className="buttons-filter-dogs" onClick={filterChange}value='api'> Perros locales </button>
                 </ul>
                 <ul className="div5">
                 <input className="buscador" type='text' placeholder='Buscar raza...' onChange={buscadorChange}></input>

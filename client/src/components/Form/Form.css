@@ -1,0 +1,142 @@
+.form-box{
+    width: 800px;
+    background-color: white;
+}
+
+.all-box{
+    background-image: url("https://c.tenor.com/7g75zRi40fAAAAAC/dancing-annoying-dog-deltarune.gif");
+    background-size: 700px ;
+}
+
+.button-back-form{
+    position:absolute;
+    right: 1290px;
+    top: 20px;
+    width: 60px;
+    height: 30px;
+    background-color: rgb(214, 164, 155);
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.name-box{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.title-input{
+    margin-right: 20px;
+}
+
+.error-msg{
+    margin: 0px;
+    color: red;
+    font-size: 12px;
+}
+
+.separation{
+    width: 20px;
+}
+
+.boxs-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs-box{
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.individual-inputs{
+    margin-top: 10px;
+    padding: 0px 7px 0px 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs-box-vida{
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+input:focus{
+    outline: none;
+}
+
+.selected-temp-box{
+    display: flex;
+    justify-content: center;
+}
+
+.selected-temp{
+    width: 200px;
+    height: 30px;
+    background: chartreuse;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.a-button{
+    margin-bottom: 60px;
+    background:#1AAB8A;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+  }
+  .a-button:hover{
+    background:chartreuse;
+    color:#284d57;
+  }
+  .a-button:before,.a-button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #1AAB8A;
+    transition:400ms ease all;
+  }
+  .a-button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .a-button:hover:before,.a-button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }

@@ -1,22 +1,36 @@
 .fondo{
     height: 625px;
-    background-image: url("../../images/dogebackground.jpg");
+    background-image: url("https://images.unsplash.com/photo-1534361960057-19889db9621e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80");
+    background-size: 1500px 800px;
   }
 
 .title{
-    margin: 0px;
+  letter-spacing: 4px;
+  text-transform: capitalize;
+  color: rgb(44, 55, 59) ;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 600px;
+  width: 200px;
+  height: 50px;
+  background-color: rgb(38, 211, 67);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .home{
     margin: 0px;
     position: absolute;
-    left: 590px;
-    top: 430px;
-    background-color: #f7ddc1;
-    border: 2px solid #422800;
+    left: 340px;
+    top: 300px;
+    background-color: #151416;
+    border: 2px solid #5cd1b4;
     border-radius: 30px;
-    box-shadow: #422800 4px 4px 0 0;
-    color: #412804;
+    box-shadow: #5cd1b4 4px 4px 0 0;
+    color: #49a18b;
     cursor: pointer;
     display: inline-block;
     font-weight: 600;
@@ -35,7 +49,7 @@
 }
 
 .home:active {
-  box-shadow: #422800 2px 2px 0 0;
+  box-shadow: #5cd1b4 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
 

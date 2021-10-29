@@ -18,10 +18,11 @@ const Body = ({getDogs, anteriorPag, siguientePag, perros, pages}) =>{
 
     return(
         perros?
-        <div className="body-container">
-            <button onClick={anteriorPag}>Anterior</button>
-            <button onClick={siguiente}>Siguiente</button>
-           
+        <div className="background">
+            <div className="buttons-pagination-box">
+                <button className="buttons-pagination" onClick={anteriorPag}>🡸 Anterior</button>
+                <button className="buttons-pagination" onClick={siguiente}>Siguiente 🡺</button>
+            </div>
             <div className='cards-container'>
                 <Cards perros={perros.slice(pages, pages + 8)} />
             </div>

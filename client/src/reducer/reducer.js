@@ -11,6 +11,8 @@ const initialState ={
 }
 
 
+
+
 export default function reducer(state = initialState, action){
     switch(action.type){
         case GET_DOGS:
@@ -46,20 +48,37 @@ export default function reducer(state = initialState, action){
             }
             if(action.payload === 'menor'){
                 state.listDogs= state.backupDogs
-                state.listDogs.sort((a, b) =>{
-                    if (parseInt(a.peso.split(" - ")[0]) > parseInt(b.peso.split(" - ")[0])) {return 1}
-                    if (parseInt(b.peso.split(" - ")[0]) > parseInt(a.peso.split(" - ")[0])) {return -1}
-                    return 0;
+                state.listDogs.forEach(e => {
+
+                    if(e.peso.length < 3){
+                        e.peso = `${e.peso} - ${e.peso}`
+                    }
+                    if(e.peso.includes('NaN')){
+                        e.peso = '1 - 5'
+                    }
                 })
-            }
+                state.listDogs.sort((a, b) => {
+                    if (parseInt(a.peso.split(" - ")[0]) < parseInt(b.peso.split(" - ")[0])) {return -1}
+                    if (parseInt(b.peso.split(" - ")[0]) < parseInt(a.peso.split(" - ")[0])) {return 1}
+                    return 0;
+                }); 
+            } state.listDogs.forEach(e => console.log(e.peso))
             if(action.payload === 'mayor'){
                 state.listDogs= state.backupDogs
+                state.listDogs.forEach(e => {
+                    if(e.peso.length < 3){
+                        e.peso = `${e.peso} - ${e.peso}`
+                    }
+                    if(e.peso.includes('NaN')){
+                        e.peso = '1 - 5'
+                    }
+                })
                 state.listDogs.sort((a, b) =>{
                     if (parseInt(a.peso.split(" - ")[1]) > parseInt(b.peso.split(" - ")[1])) {return -1}
                     if (parseInt(b.peso.split(" - ")[1]) > parseInt(a.peso.split(" - ")[1])) {return 1}
                     return 0;
                 })
-            }
+            } 
             return{...state, orden: action.payload}
         case FILTRAR_TEMP:
             if(action.payload !== 'all'){

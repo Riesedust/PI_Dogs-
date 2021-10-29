@@ -4,6 +4,7 @@ import { createDog } from '../../actions/actions'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { capitalize } from '../../actions/actions'
+import './Form.css'
 
 function validate(input){
     const errors = {}
@@ -71,7 +72,7 @@ function Form() {
         e.preventDefault()
         
         if(Object.keys(error).length > 0 || (form.name ==="" || form.alturamin ==="" || form.alturamax === "" || form.pesomin ==="" || form.pesomax ==="" || form.vidamin==="" || form.vidamax ==="" || form.temperamentos.length === 0)){
-            alert('faltan cosas')
+            alert('Faltan datos')
         } else{
         dispatch(createDog(form))
         setForm({
@@ -82,7 +83,10 @@ function Form() {
             image: "",
             temperamentos: [], 
         })
-        setNameTemp([])}
+        setNameTemp([])
+        alert('Raza creada correctamente!')
+        window.location.replace('dogs')
+        }
     }
 
     function handleChange(e){
@@ -109,33 +113,46 @@ function Form() {
     }
 
 
-
     return (
-        <form onSubmit={onSubmit}>
-            <Link to='/dogs'>Volver</Link>
-            <hr></hr>
-            <label >Nombre  </label>
+        <form className="all-box" onSubmit={onSubmit}>
+            <Link className="button-back-form" to='/dogs'>Volver</Link>
+            <div className="form-box">
+            <div className="boxs-form">
+            <h3 className="title-input" >Nombre  </h3>
             <input value={capitalize(form.name)} onChange={handleChange} name="name" type="text"/>
-            <p>{error.name}</p>
-            <hr></hr>
-            <label >Altura  </label>
-            <input value={form.altura} onChange={handleChange} name="alturamin" type="number" min="1" max="100" placeholder='Altura minima' />
-            <input value={form.altura} onChange={handleChange} name="alturamax" type="number" min="2" max="100" placeholder='Altura maxima'/>
-            <p>{error.altura}</p>
-            <hr></hr>
-            <label >Peso  </label>
-            <input value={form.peso} onChange={handleChange} name="pesomin" type="number"  min="1" max="100" placeholder='Peso minimo'/>
-            <input value={form.peso} onChange={handleChange} name="pesomax" type="number"  min="2" max="100" placeholder='Peso maximo'/>
-            <p>{error.peso}</p>
-            <hr></hr>
-            <label>Años de vida: entre </label>
-            <input value={form.vida} onChange={handleChange} name="vidamin" type="number"  min="1" max="20" placeholder='Años minimos'/>
-            <label> y </label>
-            <input value={form.vida} onChange={handleChange} name="vidamax" type="number"  min="2" max="20" placeholder='Años maximos'/>
-            <label> años</label>
-            <p>{error.vida}</p>
-            <hr></hr>
-            <label> Temperamentos  </label>
+            <p className= "error-msg">{error.name}</p>
+            </div>
+            <div className="boxs-form">
+                <div className="inputs-box">
+                    <h3 className="title-input" >Altura  </h3>
+                    <input className="individual-inputs" value={form.altura} onChange={handleChange} name="alturamin" type="number" min="1" max="100" placeholder='Minimo' />
+                    <p>  -  </p>
+                    <input className="individual-inputs" value={form.altura} onChange={handleChange} name="alturamax" type="number" min="2" max="100" placeholder='Maximo'/>
+                </div>
+                <p className="error-msg">{error.altura}</p>
+            </div>
+            <div className="boxs-form">
+                <div className="inputs-box">
+                    <h3 className="title-input" >Peso  </h3>
+                    <input className="individual-inputs" value={form.peso} onChange={handleChange} name="pesomin" type="number"  min="1" max="100" placeholder='Minimo'/>
+                    <p className="separation">   -   </p>
+                    <input className="individual-inputs" value={form.peso} onChange={handleChange} name="pesomax" type="number"  min="2" max="100" placeholder='Maximo'/>
+                </div>
+                <p className="error-msg" >{error.peso}</p>
+            </div>
+            <div className="boxs-form">
+                <div className="inputs-box-vida">
+                    <h3 className="title-input">Años de vida: </h3>
+                    <p>Entre </p>
+                    <input className="individual-inputs" value={form.vida} onChange={handleChange} name="vidamin" type="number"  min="1" max="20" placeholder='Minimo'/>
+                    <label> y </label>
+                    <input className="individual-inputs" value={form.vida} onChange={handleChange} name="vidamax" type="number"  min="2" max="20" placeholder='Maximo'/>
+                    <label> años</label>
+                </div>
+                <p className="error-msg" >{error.vida}</p>
+            </div>
+            <div className="boxs-form">
+            <h3 className="title-input"> Temperamentos  </h3>
             <select onChange={handleTemp} name="temperamentos" value={nameTemp} >
                         <option value=''>Select temperaments</option>
                         {
@@ -144,19 +161,20 @@ function Form() {
                             ))
                         }
             </select> 
-            <p>{error.temperamentos}</p>
-           <div>
-            <h3>Selected temperaments: </h3>
+            <p className="error-msg">{error.temperamentos}</p>
+           </div>
+           <h3>Selected temperaments: </h3>
+            <div className="selected-temp-box">
             <ul>
               {nameTemp?.map((elem) => (
                 <div>
-                  <label>{elem}</label>
+                  <p className="selected-temp">{elem}</p>
                 </div>
               ))}
             </ul>
           </div>
-            <hr></hr>
-            <input type="submit" value="Create dog"/>
+            <input className="a-button" type="submit" value="Create dog"/>
+            </div>
         </form>
     )
 }
