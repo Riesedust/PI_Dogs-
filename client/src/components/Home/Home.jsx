@@ -6,7 +6,7 @@ function Home() {
     return (
         <div className="fondo">
             <div className="title">
-                <h1 >dogs</h1>
+                <h1 >dogs app</h1>
             </div>
             <Link to='/dogs'>
                 <h1 className="home">Home</h1>

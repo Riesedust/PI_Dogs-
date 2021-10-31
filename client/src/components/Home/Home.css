@@ -5,15 +5,16 @@
   }
 
 .title{
+  font-family:Baskerville,Times,'Times New Roman',serif;
   letter-spacing: 4px;
   text-transform: capitalize;
-  color: rgb(44, 55, 59) ;
+  color: rgb(255, 255, 255) ;
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: 600px;
   width: 200px;
   height: 50px;
-  background-color: rgb(38, 211, 67);
+  background-color: rgb(10, 7, 29);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -26,11 +27,11 @@
     position: absolute;
     left: 340px;
     top: 300px;
-    background-color: #151416;
-    border: 2px solid #5cd1b4;
+    background-color: #b3b1ff;
+    border: 2px solid #074225;
     border-radius: 30px;
-    box-shadow: #5cd1b4 4px 4px 0 0;
-    color: #49a18b;
+    box-shadow: #074225 4px 4px 0 0;
+    color: #074225;
     cursor: pointer;
     display: inline-block;
     font-weight: 600;
@@ -45,11 +46,11 @@
 }
 
 .home:hover {
-  background-color: #fff;
+  background-color: rgb(228, 252, 248);
 }
 
 .home:active {
-  box-shadow: #5cd1b4 2px 2px 0 0;
+  box-shadow: #074225 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
 

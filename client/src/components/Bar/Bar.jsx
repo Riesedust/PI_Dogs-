@@ -49,7 +49,7 @@ function Bar(props) {
     
     return (
         <div className="bar-box">
-            <h1 className="title">Dogs app</h1>
+            <h1 className="title-body">Dogs app</h1>
             <div className="background-bar">
                 <ul key="ordenar" className="div1">
                     <h4>Ordenar:</h4>
