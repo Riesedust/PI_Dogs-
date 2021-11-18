@@ -43,8 +43,9 @@ export default function reducer(state = initialState, action){
             }
             return {...state, orden: action.payload}
         case PESO:
+            console.log(state.backupDogs)
             if(action.payload === 'default'){
-                return {...state}
+                return {...state, listDogs: state.backupDogs}
             }
             if(action.payload === 'menor'){
                 state.listDogs= state.backupDogs
@@ -62,7 +63,7 @@ export default function reducer(state = initialState, action){
                     if (parseInt(b.peso.split(" - ")[0]) < parseInt(a.peso.split(" - ")[0])) {return 1}
                     return 0;
                 }); 
-            } state.listDogs.forEach(e => console.log(e.peso))
+            }
             if(action.payload === 'mayor'){
                 state.listDogs= state.backupDogs
                 state.listDogs.forEach(e => {
@@ -79,7 +80,7 @@ export default function reducer(state = initialState, action){
                     return 0;
                 })
             } 
-            return{...state, orden: action.payload}
+            return{...state, orden: action.payload, listDogs: state.backupDogs}
         case FILTRAR_TEMP:
             if(action.payload !== 'all'){
                 state.listDogs= state.backupDogs

@@ -32,7 +32,17 @@ async function getTemperamentos(req, res, next){
       }
 }
 
+async function newTemperamento(req, res, next){
+    const {name} = req.body
+    let temp={
+        name
+    }
+    let newTemp= await Temperamento.create(temp)
+    res.send(newTemp)
+}
+
 module.exports = {
     preTemperamentos,
-    getTemperamentos
+    getTemperamentos,
+    newTemperamento
 }

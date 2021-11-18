@@ -1,9 +1,9 @@
 const { Router } = require('express');
-const axios = require('axios')
 const router = Router();
-const {getTemperamentos} = require('../controllers/temperamentoController')
+const {getTemperamentos, newTemperamento} = require('../controllers/temperamentoController')
 
 
 router.get("/", getTemperamentos)
+router.post("/add", newTemperamento )
 
 module.exports = router;
