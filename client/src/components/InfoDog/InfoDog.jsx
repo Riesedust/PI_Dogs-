@@ -10,7 +10,7 @@ function InfoDog({id}) {
     const [infodog, setInfodog] = useState()
 
     useEffect(() =>{
-        axios.get(`http://localhost:3001/dogs/${id}`)
+        axios.get(`/dogs/${id}`)
         .then(data => {
             setInfodog(data.data[0])
             })

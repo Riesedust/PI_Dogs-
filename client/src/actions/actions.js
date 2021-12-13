@@ -3,7 +3,7 @@ import {GET_DOGS, RESET, SIGUIENTE_PAG, ANTERIOR_PAG, ALFABETICO, PESO, FILTRAR_
 
 export function getDogs(){
     return (dispatch, getState) =>{
-        axios.get("http://localhost:3001/dogs")
+        axios.get("/dogs")
         .then((response)=> {
             dispatch({
             type: GET_DOGS,
@@ -17,7 +17,7 @@ export function getDogs(){
 
 export function createDog({name,image, pesomin, pesomax, alturamin, alturamax, vidamin, vidamax, temperamentos}){
     return (dispatch) => { 
-        axios.post(`http://localhost:3001/add` ,{
+        axios.post(`/add` ,{
             name,
             image,
             peso: pesomin + " - " + pesomax,

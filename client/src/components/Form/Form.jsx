@@ -59,7 +59,7 @@ function Form() {
 
     useEffect(() =>{
         async function getTemps() {
-            let e = (await axios.get('http://localhost:3001/temp')).data;
+            let e = (await axios.get('/temp')).data;
             setTemp(e);
         }
         getTemps();
